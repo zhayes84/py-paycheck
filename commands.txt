@@ -1,0 +1,8 @@
+to execute tests:
+pytest tests.py
+
+
+"[python]": {
+"editor.defaultFormatter": "ms-python.python",
+"editor.formatOnType": true
+},
