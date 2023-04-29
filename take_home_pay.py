@@ -114,11 +114,11 @@ if __name__ == "__main__":
     take_home_pay(hourly_pay, num_hours_worked)
 
 
-print(
-    f"Hourly Pay: ${hourly_pay}\n"
-    f"Number of Hours Worked: {num_hours_worked}\n"
-    f"Tax Rate: {tax_rate}%\n\n"
-    f"Overtime Pay Rate: ${overtime_rate(hourly_pay)}\n"
-    f"Overtime Accrued? {was_overtime_accrued(num_hours_worked)}\n"
-    f"Take Home Pay: ${take_home_pay(hourly_pay, num_hours_worked)}"
-)
+# print(
+#     f"Hourly Pay: ${hourly_pay}\n"
+#     f"Number of Hours Worked: {num_hours_worked}\n"
+#     f"Tax Rate: {tax_rate}%\n\n"
+#     f"Overtime Pay Rate: ${overtime_rate(hourly_pay)}\n"
+#     f"Overtime Accrued? {was_overtime_accrued(num_hours_worked)}\n"
+#     f"Take Home Pay: ${take_home_pay(hourly_pay, num_hours_worked)}"
+# )
