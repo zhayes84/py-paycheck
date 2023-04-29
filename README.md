@@ -5,6 +5,9 @@ This project is a Python script that calculates the take-home pay for an employe
 ## Author
 Zachary Hayes (c) 2023
 
+## To-Do
+ - Add tax-bracket functionality
+
 ## Functions
 
 ### overtime_rate
