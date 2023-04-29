@@ -1,7 +1,21 @@
 # take-home-pay by Zachary Hayes (c) 2023
 hourly_pay: float = 90  # value can sometimes be float
 num_hours_worked: float = 41
-tax_rate: int = 35
+
+# Define tax brackets as a list of tuples (upper_limit, tax_rate)
+TAX_BRACKETS = [
+    (9875, 10),
+    (40125, 12),
+    (85525, 22),
+    (163300, 24),
+    (207350, 32),
+    (518400, 35),
+]
+"""TAX_BRACKETS: List[Tuple[float, float]]
+
+A list of tuples representing the tax brackets and their corresponding tax rates.
+Each tuple contains an upper limit for the tax bracket and the tax rate as a percentage.
+"""
 
 
 def overtime_rate(hourly_pay: float) -> float:
@@ -66,7 +80,23 @@ def overtime_pay() -> float:
     return overtime_rate(hourly_pay) * overtime_hours_accrued(num_hours_worked)
 
 
-def tax_deduction(hourly_pay: float, num_hours_worked: float):
+def tax_bracket(annual_income: float) -> int:
+    """Determines the tax rate based on the employee's annual income.
+
+    :param annual_income: The employee's annual income.
+    :type annual_income: float
+    :return: The tax rate for the given income.
+    :rtype: int
+    """
+    # Find the first tax rate where the annual income is less than or equal to the bracket's upper limit
+    return next((rate for limit, rate in TAX_BRACKETS if annual_income <= limit), 37)
+
+
+annual_income: float = hourly_pay * num_hours_worked * 52
+tax_rate: float = tax_bracket(annual_income)
+
+
+def tax_deduction(hourly_pay: float, num_hours_worked: float) -> float:
     """Calculates amount of taxes to be deducted from gross pay.
 
     Multiplies hourly_pay by fourty to determine gross pre-overtime
@@ -117,8 +147,9 @@ if __name__ == "__main__":
 # print(
 #     f"Hourly Pay: ${hourly_pay}\n"
 #     f"Number of Hours Worked: {num_hours_worked}\n"
-#     f"Tax Rate: {tax_rate}%\n\n"
 #     f"Overtime Pay Rate: ${overtime_rate(hourly_pay)}\n"
 #     f"Overtime Accrued? {was_overtime_accrued(num_hours_worked)}\n"
+#     f"Tax Bracket: {tax_bracket(annual_income)}%\n"
+#     f"Tax Deduction: ${tax_deduction(hourly_pay, num_hours_worked)}\n"
 #     f"Take Home Pay: ${take_home_pay(hourly_pay, num_hours_worked)}"
 # )
